@@ -15,8 +15,12 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    CGRect square = CGRectMake(0.0f, 0.0f, 20.0f, 20.0f);
-    [[UIColor whiteColor] set];
+    float height = 40.0f;
+    CGRect square = CGRectMake(0.0f, 0.0f, height, height);
+    self.layer.cornerRadius = height / 2;
+    self.layer.masksToBounds = TRUE;
+    
+    [[UIColor redColor] set];
     UIRectFill(square);
  
 }

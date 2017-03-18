@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Ball.h"
 
 @interface ViewController : UIViewController
 
-
+@property (nonatomic, strong) Ball *ball;
 @end
 
