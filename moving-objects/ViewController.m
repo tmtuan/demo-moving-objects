@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 // default velocity
-static const float VELOCITY = 10.0f;
+static const float VELOCITY = 1.0f;
 
 @interface ViewController () {
 
@@ -21,32 +21,58 @@ static const float VELOCITY = 10.0f;
 @end
 
 @implementation ViewController
+
+#pragma mark - Synthesize
 @synthesize ball = _ball;
+@synthesize balls = _balls;
 
 - (id)init
 {
     if (self = [super init])
     {
         // add ball
-        self.ball = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
-        [self.view addSubview:self.ball];
-        self.ball.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
+        //self.ball = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
+        //[self.view addSubview:self.ball];
+        //self.ball.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
         
         // initialize ball's velocity
-        _velocity = CGPointMake(VELOCITY, VELOCITY);
+        //_velocity = CGPointMake(VELOCITY, VELOCITY);
         
         // schedule movement
-        [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(move) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:0.005 target:self selector:@selector(move) userInfo:nil repeats:YES];
         
     }
     
     return self;
 }
 
+- (void)loadBalls
+{
+    // add ball
+    Ball *ball1 = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
+    [self.view addSubview:ball1];
+    ball1.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
+    [ball1 setVelocity:1.0f];
+    
+    Ball *ball2 = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
+    [self.view addSubview:ball2];
+    ball2.center = CGPointMake(self.view.bounds.size.width / 4, self.view.bounds.size.height / 4);
+    [ball2 setVelocity:5.0f];
+    
+    Ball *ball3 = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
+    [self.view addSubview:ball3];
+    ball3.center = CGPointMake(self.view.bounds.size.width / 6, self.view.bounds.size.height / 6);
+    [ball3 setVelocity:10.0f];
+    
+    self.balls = [[NSMutableArray alloc] initWithObjects:ball1, ball2, ball3, nil];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self init];
+    [self loadBalls];
 }
 
 
@@ -58,17 +84,22 @@ static const float VELOCITY = 10.0f;
 - (void)move
 {
     // move ball
-    self.ball.center = CGPointMake(self.ball.center.x + _velocity.x, self.ball.center.y + _velocity.y);
-    
-    // bounce off top and bottom walls
-    if (self.ball.center.y < 20 || self.view.bounds.size.height - 20 < self.ball.center.y) {
-        _velocity.y = -_velocity.y;
+    for (Ball *b in _balls) {
+        
+        b.center = CGPointMake(b.center.x + b.getVelocityX, b.center.y + b.getVelocityY);
+        
+        // bounce off top and bottom walls
+        if (b.center.y < 20 || self.view.bounds.size.height - 20 < b.center.y) {
+            //_velocity.y = -_velocity.y;
+            [b setVelocityY: -[b getVelocityY]];
+        }
+        // bounce off left walls
+        if (b.center.x < 20 || self.view.bounds.size.width - 20 < b.center.x) {
+            //_velocity.x = -_velocity.x;
+            [b setVelocityX:-[b getVelocityX]];
+        }
     }
-    // bounce off left walls
-    if (self.ball.center.x < 20 || self.view.bounds.size.width - 20 < self.ball.center.x) {
-        _velocity.x = -_velocity.x;
-    }
-    
 }
+
 
 @end

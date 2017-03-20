@@ -13,4 +13,12 @@
 
 
 
+- (void)setVelocity:(float)velocity;
+- (void)setVelocityX:(float)v;
+- (void)setVelocityY:(float)v;
+- (float)getVelocity;
+- (float)getVelocityX;
+- (float)getVelocityY;
+
 @end
+
