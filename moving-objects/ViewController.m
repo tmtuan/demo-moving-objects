@@ -97,4 +97,12 @@
 }
 
 
+- (IBAction)addBalls:(id)sender {
+    Ball *ball = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
+    [self.view addSubview:ball];
+    ball.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
+    [ball setVelocity:(float)arc4random_uniform((uint32_t)10)];
+    
+    [self.balls addObject:ball];
+}
 @end

@@ -13,5 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray *balls;
 
+- (IBAction)addBalls:(id)sender;
+
 @end
 
