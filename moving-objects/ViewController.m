@@ -45,12 +45,13 @@
 {
     // add ball
     Ball *ball = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
-    [self.view addSubview:ball];
+    
     ball.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
     [ball setVelocity:1.0f];
     
     
     self.balls = [[NSMutableArray alloc] initWithObjects:ball, nil];
+    [self.view addSubview:[self.balls objectAtIndex:self.balls.count - 1]];
     
 }
 
@@ -90,10 +91,25 @@
 
 - (IBAction)addBalls:(id)sender {
     Ball *ball = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
-    [self.view addSubview:ball];
     ball.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
     [ball setVelocity:(float)arc4random_uniform((uint32_t)10)];
     
     [self.balls addObject:ball];
+    [self.view addSubview:[self.balls objectAtIndex:self.balls.count - 1]];
+}
+
+- (IBAction)removeBalls:(id)sender {
+    
+    if (self.balls.count > 0) {
+        
+        int index = arc4random() % self.balls.count;
+    
+        // remove ball from the screen
+        [[self.balls objectAtIndex:index] removeFromSuperview];
+        
+        // remove ball from the array
+        [self.balls removeObjectAtIndex:index];
+    }
+    
 }
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSMutableArray *balls;
 
 - (IBAction)addBalls:(id)sender;
+- (IBAction)removeBalls:(id)sender;
 
 @end
 

@@ -22,11 +22,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oze-Rf-oSi">
-                                <rect key="frame" x="140" y="84" width="94" height="30"/>
+                                <rect key="frame" x="195" y="81" width="94" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="More Balls"/>
                                 <connections>
                                     <action selector="addBalls:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wtw-OC-x99"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0T3-gh-d4L">
+                                <rect key="frame" x="93" y="81" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Less Balls"/>
+                                <connections>
+                                    <action selector="removeBalls:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5M3-A6-dxg"/>
                                 </connections>
                             </button>
                         </subviews>
