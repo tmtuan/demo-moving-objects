@@ -44,22 +44,13 @@
 - (void)loadBalls
 {
     // add ball
-    Ball *ball1 = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
-    [self.view addSubview:ball1];
-    ball1.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
-    [ball1 setVelocity:1.0f];
+    Ball *ball = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
+    [self.view addSubview:ball];
+    ball.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2);
+    [ball setVelocity:1.0f];
     
-    Ball *ball2 = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
-    [self.view addSubview:ball2];
-    ball2.center = CGPointMake(self.view.bounds.size.width / 4, self.view.bounds.size.height / 4);
-    [ball2 setVelocity:5.0f];
     
-    Ball *ball3 = [[Ball alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 40.0f, 40.0f)];
-    [self.view addSubview:ball3];
-    ball3.center = CGPointMake(self.view.bounds.size.width / 6, self.view.bounds.size.height / 6);
-    [ball3 setVelocity:10.0f];
-    
-    self.balls = [[NSMutableArray alloc] initWithObjects:ball1, ball2, ball3, nil];
+    self.balls = [[NSMutableArray alloc] initWithObjects:ball, nil];
     
 }
 
