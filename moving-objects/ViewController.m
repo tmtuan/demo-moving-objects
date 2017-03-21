@@ -8,13 +8,8 @@
 
 #import "ViewController.h"
 
-// default velocity
-static const float VELOCITY = 1.0f;
 
 @interface ViewController () {
-
-@private
-    CGPoint _velocity;
 
 }
 
@@ -23,7 +18,7 @@ static const float VELOCITY = 1.0f;
 @implementation ViewController
 
 #pragma mark - Synthesize
-@synthesize ball = _ball;
+
 @synthesize balls = _balls;
 
 - (id)init

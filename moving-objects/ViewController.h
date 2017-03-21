@@ -11,7 +11,6 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, strong) Ball *ball;
 @property (nonatomic, strong) NSMutableArray *balls;
 
 @end
